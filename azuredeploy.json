@@ -255,7 +255,7 @@
                  "autoUpgradeMinorVersion": false,
                  "settings": {
                    "fileUris": [
-                     "https://raw.githubusercontent.com/pierlabs/vmss-centos-autoscale-rancher/master/scripts/install_docker_rancher_agent.sh"
+                     "https://raw.githubusercontent.com/rwagner-inf/vmss-centos-autoscale-rancher/master/scripts/install_docker_rancher_agent.sh"
                    ],
                    "commandToExecute": "[concat('sh install_docker_rancher_agent.sh ', parameters('adminPassword'), ' ', parameters('rancherApi'))]"
                  }
