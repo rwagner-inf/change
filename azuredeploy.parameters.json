@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmSku": {
-      "value": "Standard_D3_v2"
+      "value": ""
     },
     "centOSVersion": {
       "value": "7.3"
@@ -12,7 +12,7 @@
       "value": "GEN-UNIQUE-32"
     },
     "instanceCount": {
-      "value": 5
+      "value": 1
     },
     "adminUsername": {
       "value": "rancher"
