@@ -15,6 +15,7 @@
         "description": "Size of VMs in the VM Scale Set."
       },
       "allowedValues": [
+        "Standard_B1s",
         "Standard_A0",
         "Standard_A1",
         "Standard_A2",
@@ -68,7 +69,7 @@
         "Standard_A10",
         "Standard_A11"
       ],
-      "defaultValue": "Standard_D3_v2"
+      "defaultValue": "Standard_B1s"
     },
     "centOSVersion": {
       "type": "string",
