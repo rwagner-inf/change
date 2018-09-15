@@ -5,9 +5,6 @@
       "vmSku": {
         "value": ""
       },
-      "centOSVersion": {
-        "value": "7.3"
-      },
       "vmssName": {
         "value": "GEN-UNIQUE-32"
       },
