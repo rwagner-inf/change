@@ -169,13 +169,6 @@
     "natBackendPort": 22,
     "nicName": "[concat(variables('namingInfix'), 'nic')]",
     "ipConfigName": "[concat(variables('namingInfix'), 'ipconfig')]",
-    "osType": {
-      "publisher": "OpenLogic",
-      "offer": "CentOS",
-      "sku": "[parameters('centOSVersion')]",
-      "version": "latest"
-    },
-    "imageReference": "[variables('osType')]",
     "computeApiVersion": "2017-03-30",
     "networkApiVersion": "2017-04-01",
     "storageApiVersion": "2015-06-15",
