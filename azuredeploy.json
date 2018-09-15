@@ -80,34 +80,52 @@
         "description": "A versão do CentOS da VM. Versão aceita: 7.3 OpenLogic"
       }
     },
-    "redeVirtual": {
-      "type": "string",
-      "metadata": {
-        "description": "Nome da Rede virtual. Digitar até se escolher o mesmo Grupo de Recursos. Ex.: pier-vnet"
+    // "redeVirtual": {
+    //   "type": "string",
+    //   "metadata": {
+    //     "description": "Nome da Rede virtual. Digitar até se escolher o mesmo Grupo de Recursos. Ex.: pier-vnet"
+    //   },
+    //   "defaultValue": ""
+    // },
+    // "redeVirtualPrefixo": {
+    //   "type": "string",
+    //   "metadata": {
+    //     "description": "Rede IP e máscara da Rede Virtual."
+    //   },
+    //   "defaultValue": ""
+    // },
+    // "subRede": {
+    //   "type": "string",
+    //   "metadata": {
+    //     "description": "Nome da SubRede. Digitar até se escolher o mesmo Grupo de Recursos. Ex.: pier"
+    //   },
+    //   "defaultValue": ""
+    // },
+    // "subRedePrefixo": {
+    //   "type": "string",
+    //   "metadata": {
+    //     "description": "Rede IP e máscara da Subrede."
+    //   },
+    //   "defaultValue": ""
+    // },
+    "existingVnetResourceGroupName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the resourceGroup for the existing virtual network to deploy the scale set into."
+        }
       },
-      "defaultValue": ""
-    },
-    "redeVirtualPrefixo": {
-      "type": "string",
-      "metadata": {
-        "description": "Rede IP e máscara da Rede Virtual."
+      "existingVnetName": {
+        "type": "string",
+        "metadata": {
+          "description": "vName of the existing virtual network to deploy the scale set into."
+        }
       },
-      "defaultValue": ""
-    },
-    "subRede": {
-      "type": "string",
-      "metadata": {
-        "description": "Nome da SubRede. Digitar até se escolher o mesmo Grupo de Recursos. Ex.: pier"
+      "existingSubnetName": {
+        "type": "string",
+        "metadata": {
+          "description": "Name of the existing subnet to deploy the scale set into."
+        }
       },
-      "defaultValue": ""
-    },
-    "subRedePrefixo": {
-      "type": "string",
-      "metadata": {
-        "description": "Rede IP e máscara da Subrede."
-      },
-      "defaultValue": ""
-    },
     "vmssName": {
       "type": "string",
       "metadata": {
@@ -231,10 +249,10 @@
                   "primary": "true",
                   "ipConfigurations": [
                     {
-                      "name": "[variables('ipConfigName')]",
+                      "name": "ipconfig",
                       "properties": {
                         "subnet": {
-                          "id": "[concat('/subscriptions/', subscription().subscriptionId,'/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'), '/subnets/', variables('subnetName'))]"
+                          "id": "[resourceId(parameters('existingVnetResourceGroupName'), 'Microsoft.Network/virtualNetworks/subnets', parameters('existingVnetName'), parameters('existingSubNetName'))]"
                         }
                       }
                     }
