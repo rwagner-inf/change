@@ -1,6 +1,5 @@
 #!/bin/bash
 # Script: Instalação do docker-engine versão 17.03.1.ce e adicionar usuário rancher para não pedir senha
-
 ## Validando se foi passada as variaveis no comando
 echo "## Validando variaveis"
 if [ -z "$1" ];
@@ -55,18 +54,54 @@ else
 	
 fi
 
-## Subindo o rancher node
+
 # Variable Setup
 echo "# Setting Variables"
 HOST_URL=$2
 AGENT_VERSION="v1.2.2"
-LOCAL_IP=`ifconfig eth0 | awk '/inet /{print substr($2,1)}'`
+LOCAL_IP=`ip route get 1.1.1.1 | grep -oP 'src \K\S+'`
+ECC_DIR=DIRETORIO_ECC
+CRIPTO_DIR=DIRETORIO_DO_CRIPTO
 STATUS=255
 SLEEP=5
 echo "### Server   = $HOST_URL"
 echo "### Version  = $AGENT_VERSION"
 echo "### Agent IP = $LOCAL_IP"
 
+
+## Criando diretório do LunaClient e fazendo download do certificado
+if [[ ! -d $CRIPTO_DIR ]]; then
+    mkdir $CRIPTO_DIR
+elif [[ ! -d $CRIPTO_DIR ]]; then
+    echo "Diretorio $CRIPTO_DIR ja existe" 1>&2
+fi
+
+
+if [[ ! -d $ECC_DIR ]]; then
+    mkdir $ECC_DIR
+elif [[ ! -d $ECC_DIR ]]; then
+    echo "Diretorio $ECC_DIR ja existe" 1>&2
+fi
+
+#Copiar conteudo do criptoconf
+echo -e "conteudo
+do
+arquivo
+cripto 
+cert="$LOCAL_IP"KEY.pem
+cert2="$LOCAL_IP".pem" > $CRIPTO_DIR/criptofile.cnf
+
+
+## Baixando os certificados
+curl -o $ECC_DIR/"$LOCAL_IP"KEY.pem https://raw.githubusercontent.com/"$LOCAL_IP"KEY.pem
+curl -o $ECC_DIR/"$LOCAL_IP".pem https://raw.githubusercontent.com/"$LOCAL_IP".pem
+
+# Configurar permissões para os arquivos, se necessário
+chmod SET_PERMISSIONS
+
+
+
+## Subindo o rancher node
 echo "# Installing Rancher Agent"
 while [ $STATUS -gt 0 ]
 do
