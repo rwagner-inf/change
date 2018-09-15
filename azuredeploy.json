@@ -69,16 +69,9 @@
         "Standard_A11"
       ],
       "defaultValue": "Standard_D3_v2"
-},
-    "centOSVersion": {
-      "type": "string",
-      "defaultValue": "7.3",
-      "allowedValues": [
-        "7.3"
-      ],
-      "metadata": {
-        "description": "A versão do CentOS da VM. Versão aceita: 7.3 OpenLogic"
-      }
+    },
+    "image": {
+        "type": "object"
     },
     // "redeVirtual": {
     //   "type": "string",
