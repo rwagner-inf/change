@@ -1,24 +1,41 @@
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "vmSku": {
-      "value": ""
-    },
-    "centOSVersion": {
-      "value": "7.3"
-    },
-    "vmssName": {
-      "value": "GEN-UNIQUE-32"
-    },
-    "instanceCount": {
-      "value": 1
-    },
-    "adminUsername": {
-      "value": "rancher"
-    },
-    "adminPassword": {
-      "value": "GEN-PASSWORD"
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "vmSku": {
+        "value": ""
+      },
+      "centOSVersion": {
+        "value": "7.3"
+      },
+      "vmssName": {
+        "value": "GEN-UNIQUE-32"
+      },
+      "image": {
+        "value": {
+            "sku": "7.4",
+            "publisher": "RedHat",
+            "version": "latest",
+            "offer": "RHEL"
+        }
+       },
+      "instanceCount": {
+        "value": 1
+      },
+      "adminUsername": {
+        "value": "rancher"
+      },
+      "adminPassword": {
+        "value": "GEN-PASSWORD"
+      },
+      "existingVnetResourceGroupName": {
+        "value": "GET-PREREQ-existingVnetResourceGroupName"
+      },
+      "existingVnetName": {
+        "value": "GET-PREREQ-existingVnetName"
+      },
+      "existingSubnetName": {
+        "value": "GET-PREREQ-existingSubnetName"
+      }
     }
   }
-}
