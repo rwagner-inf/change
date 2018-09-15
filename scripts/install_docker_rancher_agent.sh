@@ -69,14 +69,14 @@ echo "### Version  = $AGENT_VERSION"
 echo "### Agent IP = $LOCAL_IP"
 
 
-## Criando diretório do LunaClient e fazendo download do certificado
+## Criando diretório do LunaClient
 if [[ ! -d $CRIPTO_DIR ]]; then
     mkdir $CRIPTO_DIR
 elif [[ ! -d $CRIPTO_DIR ]]; then
     echo "Diretorio $CRIPTO_DIR ja existe" 1>&2
 fi
 
-
+## Diretório ECC
 if [[ ! -d $ECC_DIR ]]; then
     mkdir $ECC_DIR
 elif [[ ! -d $ECC_DIR ]]; then
